@@ -14,6 +14,7 @@ const Main = () => {
       className="main-class"
     >
       <Home />
+      <About />
     </Box>
   );
 };
