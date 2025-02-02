@@ -1,0 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "BebasNeue";
+  src: local("BebasNeue"), url("./assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Lobster";
+  src: local("Lobster"), url("./assets/fonts/Lobster-Regular.ttf") format("truetype");
+}
