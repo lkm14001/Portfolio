@@ -170,6 +170,7 @@ const Home = () => {
           boxSizing: "border-box",
           inset: 0,
           position: "fixed",
+          zIndex: 2
         }}
       >
         <LeftBorderLine />
