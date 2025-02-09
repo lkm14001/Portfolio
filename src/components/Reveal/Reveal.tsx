@@ -4,9 +4,10 @@ import { Box } from "@mui/material";
 
 interface RevealProps {
   children: JSX.Element;
+  inline? : boolean;
 }
 
-const Reveal: React.FC<RevealProps> = ({ children }) => {
+const Reveal: React.FC<RevealProps> = ({ children, inline }) => {
   const MotionBox = motion(Box<"div">);
 
   const ref = useRef(null);
@@ -28,12 +29,14 @@ const Reveal: React.FC<RevealProps> = ({ children }) => {
         sx={(theme) => ({
           position: "relative",
           overflow: "hidden",
-          width:'fit-content'
+          width:'fit-content',
+          ...(inline ? { display: "inline" } : {}),
         })}
       >
         <MotionBox
-          component={"div"}
-          sx={(theme) => ({})}
+          sx={(theme) => ({
+            ...(inline ? { display: "inline" } : {}),
+          })}
           variants={{
             hidden: { opacity: 0, y: 75 },
             visible: { opacity: 1, y: 0 },
