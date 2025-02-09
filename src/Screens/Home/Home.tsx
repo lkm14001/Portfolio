@@ -7,142 +7,142 @@ import { motion, useScroll, useTransform } from "motion/react";
 import cssModule from "./Home.module.css";
 import Reveal from "../../components/Reveal/Reveal";
 
+export const RightBorderLine = styled(Box)`
+  position: absolute;
+  right: 2rem;
+  top: 0;
+  width: 2px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #f7770f;
+    animation: rightBorderGrow 1s ease-out forwards;
+  }
+
+  &::after {
+    content: "Leela Krishna Mohan";
+    position: absolute;
+    bottom: 70vh;
+    left: 0;
+    width: max-content;
+    transform-origin: 0 50%;
+    transform: rotate(-90deg) translateX(-100%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: #f7770f;
+    -webkit-background-clip: text;
+    color: transparent;
+    opacity: 0;
+    animation: rightFadeIn 0.5s ease-out forwards;
+    animation-delay: 1s;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  @keyframes rightBorderGrow {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 40vh;
+    }
+  }
+
+  @keyframes rightFadeIn {
+    0% {
+      opacity: 0;
+      transform: rotate(-90deg) translateX(-100%) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(-90deg) translateX(-100%) scale(1);
+    }
+  }
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
+`;
+
+export const LeftBorderLine = styled(Box)`
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  width: 2px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #f7770f;
+    animation: borderGrow 1s ease-out forwards;
+  }
+
+  &::after {
+    content: "Leela Krishna Mohan";
+    position: absolute;
+    top: 40vh;
+    left: 0;
+    width: max-content;
+    transform-origin: 0 50%;
+    transform: rotate(-90deg) translateX(-100%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: #f7770f;
+    -webkit-background-clip: text;
+    color: transparent;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 1s;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  @keyframes borderGrow {
+    0% {
+      height: 0;
+    }
+    100% {
+      height: 40vh;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: rotate(-90deg) translateX(-100%) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(-90deg) translateX(-100%) scale(1);
+    }
+  }
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
+`;
+
 const Home = () => {
   const BoxMotion = motion(Box);
 
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 200], [1, 10], { clamp: false });
   const backgroundOpacity = useTransform(scrollY, [0, 500], [1, 0]);
-
-  const RightBorderLine = styled(Box)`
-    position: absolute;
-    right: 2rem;
-    top: 0;
-    width: 2px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-    &::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0;
-      background: #f7770f;
-      animation: rightBorderGrow 1s ease-out forwards;
-    }
-
-    &::after {
-      content: "Leela Krishna Mohan";
-      position: absolute;
-      bottom: 70vh;
-      left: 0;
-      width: max-content;
-      transform-origin: 0 50%;
-      transform: rotate(-90deg) translateX(-100%);
-      font-size: 1.5rem;
-      font-weight: bold;
-      background: #f7770f;
-      -webkit-background-clip: text;
-      color: transparent;
-      opacity: 0;
-      animation: rightFadeIn 0.5s ease-out forwards;
-      animation-delay: 1s;
-      letter-spacing: 2px;
-      white-space: nowrap;
-    }
-
-    @keyframes rightBorderGrow {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 40vh;
-      }
-    }
-
-    @keyframes rightFadeIn {
-      0% {
-        opacity: 0;
-        transform: rotate(-90deg) translateX(-100%) scale(0.9);
-      }
-      100% {
-        opacity: 1;
-        transform: rotate(-90deg) translateX(-100%) scale(1);
-      }
-    }
-    @media screen and (max-width: 650px) {
-      display: none;
-    }
-  `;
-
-  const LeftBorderLine = styled(Box)`
-    position: absolute;
-    left: 2rem;
-    top: 0;
-    width: 2px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 0;
-      background: #f7770f;
-      animation: borderGrow 1s ease-out forwards;
-    }
-
-    &::after {
-      content: "Leela Krishna Mohan";
-      position: absolute;
-      top: 40vh;
-      left: 0;
-      width: max-content;
-      transform-origin: 0 50%;
-      transform: rotate(-90deg) translateX(-100%);
-      font-size: 1.5rem;
-      font-weight: bold;
-      background: #f7770f;
-      -webkit-background-clip: text;
-      color: transparent;
-      opacity: 0;
-      animation: fadeIn 0.5s ease-out forwards;
-      animation-delay: 1s;
-      letter-spacing: 2px;
-      white-space: nowrap;
-    }
-
-    @keyframes borderGrow {
-      0% {
-        height: 0;
-      }
-      100% {
-        height: 40vh;
-      }
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: rotate(-90deg) translateX(-100%) scale(0.9);
-      }
-      100% {
-        opacity: 1;
-        transform: rotate(-90deg) translateX(-100%) scale(1);
-      }
-    }
-    @media screen and (max-width: 650px) {
-      display: none;
-    }
-  `;
 
   return (
     <Layout
@@ -170,7 +170,7 @@ const Home = () => {
           boxSizing: "border-box",
           inset: 0,
           position: "fixed",
-          zIndex: 2
+          zIndex: 2,
         }}
       >
         <LeftBorderLine />
@@ -294,8 +294,8 @@ const Home = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "start",
-              [theme.breakpoints.down('sipad')]: {
-                paddingX: 8
+              [theme.breakpoints.down("sipad")]: {
+                paddingX: 8,
               },
               [theme.breakpoints.down("sm")]: {
                 paddingX: 6,
@@ -336,7 +336,8 @@ const Home = () => {
                 letterSpacing: 2,
               })}
             >
-              Software Engineer. A self-taught developer with an interest in the world of web.
+              Software Engineer. A self-taught developer with an interest in the
+              world of web.
             </Typography>
           </Box>
           <Button
