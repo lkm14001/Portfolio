@@ -73,7 +73,7 @@ const Navbar = () => {
 
   useMotionValueEvent(scrollY, "change", (scrollPixels) => {
     const difference = scrollPixels - lastScrollYRef.current;
-    if (Math.abs(difference) > 50) {
+    if (Math.abs(difference) > 10) {
       setIsHidden(difference > 0);
       lastScrollYRef.current = scrollPixels;
     }
@@ -81,6 +81,8 @@ const Navbar = () => {
 
   const navBarItems: SxProps<Theme> = (theme) => ({
     fontSize: 28,
+    fontFamily: "Bebasneue",
+    letterSpacing: 1,
     color: "white",
     position: "relative",
     opacity: 0.75,
@@ -219,6 +221,8 @@ const Navbar = () => {
           <Button
             sx={(theme) => ({
               fontSize: "1rem",
+              fontFamily: "Bebasneue",
+              letterSpacing: 3,
               backgroundColor: "homePage.navButtons",
               borderRadius: 48,
               paddingX: 4,
