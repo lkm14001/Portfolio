@@ -1,8 +1,5 @@
 import {
-  AnimationProps,
   motion,
-  MotionStyle,
-  useInView,
   useScroll,
   useTransform,
 } from "motion/react";
@@ -15,7 +12,7 @@ import {
   Theme,
   Typography,
 } from "@mui/material";
-import me from "../../assets/me.jpg";
+import me from "../../assets/Images/me.jpg";
 import React from "react";
 import Reveal from "../../components/Reveal/Reveal";
 import { LeftBorderLine, RightBorderLine } from "../Home/Home";

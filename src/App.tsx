@@ -7,6 +7,7 @@ import { getDesignTokens } from "./utils/theme";
 import MainLayout from "./Screens/Main/MainLayout";
 import { useState } from "react";
 import Loading from "./Screens/Loading/Loading";
+import Work from "./Screens/Work/Work";
 
 const App = () => {
   const theme = getDesignTokens();
@@ -25,7 +26,7 @@ const App = () => {
           <Route element={<MainLayout />}>
             <Route path="/" index element={<Main />} />
             <Route path="/about" element={<About />} />
-            <Route path="/my-work" element={<Home />} />
+            <Route path="/my-work" element={<Work />} />
           </Route>
         </Routes>
       )}
