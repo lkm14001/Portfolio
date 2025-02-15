@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Home from "../Home/Home";
 import About from "../About/About";
 import Work from "../Work/Work";
+import Contact from "../Contact/Contact";
 
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
       <Home />
       <About />
       <Work />
+      <Contact />
     </Box>
   );
 };
