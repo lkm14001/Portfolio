@@ -280,6 +280,7 @@ const Work = () => {
                 [theme.breakpoints.down("sm")]: {
                   flexDirection: "column",
                 },
+                overflowX:'hidden'
               })}
             >
               <Box
