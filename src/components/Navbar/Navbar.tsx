@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/Images/logo.png";
 import { useNavigate } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 import { useRef, useState } from "react";
