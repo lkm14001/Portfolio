@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { motion } from "motion/react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/Images/logo.png";
 
 const Loading = () => {
   return (
