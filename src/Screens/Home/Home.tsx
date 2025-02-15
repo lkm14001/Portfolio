@@ -2,9 +2,8 @@ import { Box, Button, styled, Typography } from "@mui/material";
 import Layout from "../Layout/Layout";
 import Profile from "../../components/Profile/Profile";
 import { profiles } from "../../utils/constants";
-import me from "../../assets/me.jpg";
+import me from "../../assets/Images/me.jpg";
 import { motion, useScroll, useTransform } from "motion/react";
-import cssModule from "./Home.module.css";
 import Reveal from "../../components/Reveal/Reveal";
 
 export const RightBorderLine = styled(Box)`
