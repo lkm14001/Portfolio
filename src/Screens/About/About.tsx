@@ -1,8 +1,4 @@
-import {
-  motion,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import Layout from "../Layout/Layout";
 import {
   Box,
@@ -34,37 +30,7 @@ import {
   TSIcon,
 } from "../../components/AboutScreenComponents/SVG/SVGs";
 import AnimatedText from "../../components/AnimatedText/AnimatedText";
-
-// Tech Stack Icons
-
-interface IGradientText {
-  sx?: SxProps<Theme>;
-  children: React.ReactNode;
-}
-
-const GradientText = ({ sx, children }: IGradientText) => {
-  return (
-    <Typography
-      component="span"
-      sx={[
-        {
-          background:
-            "linear-gradient(90deg, rgba(247,119,15,1) 0%, rgba(232,66,15,1) 34%, rgba(246,0,232,1) 100%)",
-          color: "transparent",
-          backgroundClip: "text",
-          fontFamily: "inherit",
-          fontSize: "inherit",
-          fontWeight: "bolder",
-          "-webkit-background-clip": "text",
-          "-webkit-text-fill-color": "transparent",
-        },
-        ...(Array.isArray(sx) ? sx : [sx]),
-      ]}
-    >
-      {children}
-    </Typography>
-  );
-};
+import GradientText from "../../components/GradientText/GradientText";
 
 const CustomMarquee = styled(Marquee)<BoxProps>(({ theme }) => ({}));
 
@@ -131,22 +97,26 @@ const About = () => {
               },
             })}
           >
-            <AnimatedText component="span" sx={(theme) => ({
-              // width: 750,
-              fontSize: 150,
-              fontFamily: "Bebasneue",
-              fontWeight: "bolder",
-              transition: "all 0.3s ease",
-              [theme.breakpoints.down("sipad")]: {
-                fontSize: 100,
-              },
-              [theme.breakpoints.down("sm")]: {
-                fontSize: 80,
-              },
-              [theme.breakpoints.down("xxs")]: {
-                fontSize: 70,
-              },
-            })} text="Bonjour !" />
+            <AnimatedText
+              component="span"
+              sx={(theme) => ({
+                // width: 750,
+                fontSize: 150,
+                fontFamily: "Bebasneue",
+                fontWeight: "bolder",
+                transition: "all 0.3s ease",
+                [theme.breakpoints.down("sipad")]: {
+                  fontSize: 100,
+                },
+                [theme.breakpoints.down("sm")]: {
+                  fontSize: 80,
+                },
+                [theme.breakpoints.down("xxs")]: {
+                  fontSize: 70,
+                },
+              })}
+              text="Bonjour !"
+            />
           </GradientText>
         </Box>
         <Box
@@ -274,13 +244,15 @@ const About = () => {
                 </Typography>
               </Reveal>
               &nbsp;&nbsp; I'm a Full Stack Developer ( MERN ) based in Vizag,
-              India. Continouosly seeking the latest trends, I enjoy
-              taking on new challenges and learning new technologies. Beyond
-              coding, I’m always eager to explore new technologies, especially
-              Web3 and blockchain development. In my free time, you’ll find me
-              playing basketball with friends, binge-watching Netflix series, or
-              going on bike rides. Let’s
-              <GradientText sx={{ fontFamily: "inherit", fontWeight: 'bolder' }}>
+              India. Continouosly seeking the latest trends, I enjoy taking on
+              new challenges and learning new technologies. Beyond coding, I’m
+              always eager to explore new technologies, especially Web3 and
+              blockchain development. In my free time, you’ll find me playing
+              basketball with friends, binge-watching Netflix series, or going
+              on bike rides. Let’s
+              <GradientText
+                sx={{ fontFamily: "inherit", fontWeight: "bolder" }}
+              >
                 &nbsp;connect and build something amazing!
               </GradientText>
             </Typography>
@@ -292,7 +264,7 @@ const About = () => {
             width: "100%",
             display: "flex",
             alignItems: "center",
-            flexDirection: 'column',
+            flexDirection: "column",
             gap: 3,
             mt: 3,
             [theme.breakpoints.down("sm")]: {
@@ -300,19 +272,23 @@ const About = () => {
             },
           })}
         >
-          <GradientText sx={(theme) => ({
-            fontFamily: 'Sriracha',
-            fontSize: 25,
-            [theme.breakpoints.down("md")]: {
-              fontSize: 20,
-            },
-            [theme.breakpoints.down("ipad")]: {
-              fontSize: 18,
-            },
-            [theme.breakpoints.down("sm")]: {
-              fontSize: 15,
-            },
-          })}>⚡ Where Innovation Meets Code – My Tech Stack 👇</GradientText>
+          <GradientText
+            sx={(theme) => ({
+              fontFamily: "Sriracha",
+              fontSize: 25,
+              [theme.breakpoints.down("md")]: {
+                fontSize: 20,
+              },
+              [theme.breakpoints.down("ipad")]: {
+                fontSize: 18,
+              },
+              [theme.breakpoints.down("sm")]: {
+                fontSize: 15,
+              },
+            })}
+          >
+            ⚡ Where Innovation Meets Code – My Tech Stack 👇
+          </GradientText>
           <CustomMarquee
             pauseOnHover
             sx={(theme) => ({

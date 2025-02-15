@@ -1,13 +1,27 @@
-import { motion, useInView } from "motion/react";
+import { CustomValueType, motion, MotionValue, useInView } from "motion/react";
 import { Theme, Typography } from "@mui/material";
 import { SxProps } from "@mui/material";
 
 interface AnimatedTextProps {
+  /**Text to display */
   text: string;
+  /**Style Props */
   sx?: SxProps<Theme>;
-  scaleStyle?: any;
+  /**style to scale */
+  scaleStyle?:
+    | string
+    | number
+    | CustomValueType
+    | MotionValue<number>
+    | MotionValue<string>
+    | MotionValue<any>
+    | undefined;
+  /**className */
   className?: any;
+  /**component type */
   component: string;
+  /**Animate everytime the component is in view */
+  whileInView?: boolean;
 }
 
 const textAnimations = {
@@ -25,6 +39,7 @@ const AnimatedText = ({
   scaleStyle,
   className,
   component,
+  whileInView,
 }: AnimatedTextProps) => {
   const MotionText = motion(Typography<any>);
 
@@ -32,12 +47,12 @@ const AnimatedText = ({
     <>
       <MotionText
         className={className}
-        style={{ scale: scaleStyle ? scaleStyle : {} }}
+        style={{ scale: scaleStyle ? scaleStyle : undefined }}
         component={component}
         transition={{ staggerChildren: 0.1 }}
         initial="initial"
         animate="animate"
-        whileInView="animate"
+        {...(whileInView && { whileInView: "animate" })}
       >
         {text.split("").map((character, index) => (
           <MotionText
