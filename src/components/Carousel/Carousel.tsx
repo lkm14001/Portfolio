@@ -19,10 +19,14 @@ interface CarouselProps {
   selectedItem: number;
   /**Navigation color */
   navigationColor?: string;
+  /**Navigation Background Color */
+  navigationBackgrounColor?: string;
   /**Navigation size */
   navigationSize?: "large" | "small" | "medium";
+  /**Item Direction Row or Column */
+  itemDirection?: "row" | "column";
   /**Item alignment Row or column */
-  itemAlignment?: "row" | "column";
+  itemAlignment?: "center" | "start" | "end";
   /**Gap between items */
   itemGap?: number;
   /**Style for the items on hover */
@@ -38,8 +42,10 @@ const Carousel = ({
   selectedItem,
   navigationSize,
   navigationColor,
+  navigationBackgrounColor,
   itemGap,
   itemAlignment,
+  itemDirection,
   hoverStyle,
 }: CarouselProps) => {
   const handlePrevious = () => {
@@ -68,8 +74,7 @@ const Carousel = ({
       <IconButton
         sx={(theme) => ({
           color: navigationColor,
-          backgroundColor: "grey",
-          // zIndex: 5,
+          backgroundColor: navigationBackgrounColor,
         })}
         onClick={handlePrevious}
         size={navigationSize}
@@ -82,10 +87,12 @@ const Carousel = ({
         component="div"
         sx={[
           {
-            // width: 100,
+            width: "100%",
+            height: '100%',
             display: "flex",
-            flexDirection: itemAlignment,
+            flexDirection: itemDirection,
             gap: itemGap,
+            justifyContent: itemAlignment
           },
         ]}
       >
@@ -96,9 +103,11 @@ const Carousel = ({
             sx={[
               {
                 height: "100%",
+                cursor: "pointer",
                 "& img": {
                   width: "100%",
                   height: "100%",
+                  borderRadius: 'inherit',
                 },
               },
               ...(index === selectedItem
@@ -111,6 +120,7 @@ const Carousel = ({
                 "&:hover": hoverStyle
               },
             ]}
+            onClick={() => onChange(index)}
           >
             {cloneElement(item)}
           </Box>
@@ -119,6 +129,7 @@ const Carousel = ({
       <IconButton
         sx={(theme) => ({
           color: navigationColor,
+          backgroundColor: navigationBackgrounColor,
         })}
         onClick={handleNext}
         size={navigationSize}
