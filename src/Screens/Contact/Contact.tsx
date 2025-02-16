@@ -111,6 +111,8 @@ const Contact = () => {
               },
             })}
             text="Let's Connect !"
+            whileInView
+            once
           />
         </GradientText>
         <Box
