@@ -22,6 +22,8 @@ interface AnimatedTextProps {
   component: string;
   /**Animate everytime the component is in view */
   whileInView?: boolean;
+  /**Animate only once when the component is in view */
+  once?: boolean;
 }
 
 const textAnimations = {
@@ -40,6 +42,7 @@ const AnimatedText = ({
   className,
   component,
   whileInView,
+  once,
 }: AnimatedTextProps) => {
   const MotionText = motion(Typography<any>);
 
@@ -53,6 +56,7 @@ const AnimatedText = ({
         initial="initial"
         animate="animate"
         {...(whileInView && { whileInView: "animate" })}
+        {...(once && { viewport: { once } })}
       >
         {text.split("").map((character, index) => (
           <MotionText
