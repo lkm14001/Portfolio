@@ -18,7 +18,7 @@ interface ProfileProps {
 }
 
 const Profile = ({ profilePicture, profiles }: ProfileProps) => {
-  const BoxLink = motion(Box<"a">);
+  const BoxLink = motion.create(Box<"a">);
 
   return (
     <Box

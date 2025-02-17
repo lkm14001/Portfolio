@@ -187,7 +187,7 @@ const Work = () => {
     </>
   );
 
-  const MotionBox = motion(Box<"div">);
+  const MotionBox = motion.create(Box<"div">);
 
   return (
     <Layout
@@ -280,8 +280,9 @@ const Work = () => {
                 [theme.breakpoints.down("sm")]: {
                   flexDirection: "column",
                 },
-                overflowX:'hidden'
+                overflowX: "hidden",
               })}
+              key={project.id}
             >
               <Box
                 component="div"
@@ -300,9 +301,9 @@ const Work = () => {
                   [theme.breakpoints.down("sm")]: {
                     order: project.id % 2 === 0 && 1,
                   },
-                  [theme.breakpoints.down('xs')]: {
+                  [theme.breakpoints.down("xs")]: {
                     width: project.id % 2 === 0 ? "95%" : 300,
-                  }
+                  },
                 })}
               >
                 {project.id % 2 === 0 ? (
@@ -372,9 +373,9 @@ const Work = () => {
                   [theme.breakpoints.down("lg")]: {
                     width: project.id % 2 !== 0 ? "75%" : 350,
                   },
-                  [theme.breakpoints.down('xs')]: {
+                  [theme.breakpoints.down("xs")]: {
                     width: project.id % 2 !== 0 ? "95%" : 300,
-                  }
+                  },
                 })}
               >
                 {project.id % 2 !== 0 ? (

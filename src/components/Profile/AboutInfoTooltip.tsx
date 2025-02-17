@@ -44,7 +44,7 @@ const AboutInfoTooltip = () => {
     },
   }));
 
-  const BoxMotion = motion(Box<"div">);
+  const BoxMotion = motion.create(Box<"div">);
 
   return (
     <Box

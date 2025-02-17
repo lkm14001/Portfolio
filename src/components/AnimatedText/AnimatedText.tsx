@@ -44,7 +44,7 @@ const AnimatedText = ({
   whileInView,
   once,
 }: AnimatedTextProps) => {
-  const MotionText = motion(Typography<any>);
+  const MotionText = motion.create(Typography<any>);
 
   return (
     <>

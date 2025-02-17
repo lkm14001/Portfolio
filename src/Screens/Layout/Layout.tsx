@@ -9,7 +9,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ children, sx, id, motionStyle }: LayoutProps) => {
-  const BoxMotion = motion(Box);
+  const BoxMotion = motion.create(Box);
   return (
     <>
       <BoxMotion
