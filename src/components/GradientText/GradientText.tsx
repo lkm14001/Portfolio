@@ -19,8 +19,6 @@ const GradientText = ({ sx, children }: IGradientText) => {
           fontFamily: "inherit",
           fontSize: "inherit",
           fontWeight: "bolder",
-          "-webkit-background-clip": "text",
-          "-webkit-text-fill-color": "transparent",
         },
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}

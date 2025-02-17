@@ -137,7 +137,7 @@ export const LeftBorderLine = styled(Box)`
 `;
 
 const Home = () => {
-  const BoxMotion = motion(Box);
+  const BoxMotion = motion.create(Box);
 
   const { scrollY } = useScroll();
   const scale = useTransform(scrollY, [0, 200], [1, 10], { clamp: false });

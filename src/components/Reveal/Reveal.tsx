@@ -8,7 +8,7 @@ interface RevealProps {
 }
 
 const Reveal: React.FC<RevealProps> = ({ children, inline }) => {
-  const MotionBox = motion(Box<"div">);
+  const MotionBox = motion.create(Box<"div">);
 
   const ref = useRef(null);
   const isInView = useInView(ref);

@@ -35,7 +35,7 @@ import GradientText from "../../components/GradientText/GradientText";
 const CustomMarquee = styled(Marquee)<BoxProps>(({ theme }) => ({}));
 
 const About = () => {
-  const BoxMotion = motion(Box);
+  const BoxMotion = motion.create(Box);
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [600, 800], [0, 1]);
   const y = useTransform(scrollY, [600, 700], [100, 0]);

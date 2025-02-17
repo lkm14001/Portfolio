@@ -21,9 +21,9 @@ const Navbar = () => {
   const { scrollY } = useScroll();
   const lastScrollYRef = useRef(0);
 
-  const BoxMotion = motion(Box<"div">);
-  const IconButtonMotion = motion(IconButton);
-  const NavHashLinkMotion = motion(NavHashLink);
+  const BoxMotion = motion.create(Box<"div">);
+  const IconButtonMotion = motion.create(IconButton);
+  const NavHashLinkMotion = motion.create(NavHashLink);
 
   const menuVariants = {
     closed: {
