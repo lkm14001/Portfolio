@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import Layout from "../Layout/Layout";
 import { Box, Button, Link, TextField, Typography } from "@mui/material";
 import { LeftBorderLine, RightBorderLine } from "../Home/Home";
@@ -9,26 +9,27 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { FaWhatsapp } from "react-icons/fa";
 
+import toast, { Toaster } from "react-hot-toast";
+
+import { useForm } from "react-hook-form";
+
+type FormValues = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
 const Contact = () => {
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [subject, setSubject] = React.useState("");
-  const [message, setMessage] = React.useState("");
+  const { register, handleSubmit } = useForm();
 
-  const onSubmitContactForm = async (event: any) => {
-    console.log(event);
-    event.preventDefault();
-
-    const formData = {
-      name,
-      email,
-      subject,
-      message,
+  const onSubmitContactForm = async (data: any) => {
+    const contactForm = {
+      ...data,
       access_key: "2f2565b5-6092-48eb-9706-db71a8825125",
     };
 
-    const json = JSON.stringify(formData);
-
+    const json = JSON.stringify(contactForm);
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -39,9 +40,28 @@ const Contact = () => {
     }).then((res) => res.json());
 
     if (res.success) {
-      console.log("Successfully Sent Message");
+      toast.success(
+        <GradientText
+          sx={(theme) => ({
+            fontFamily: "Bebasneue",
+            letterSpacing: 2,
+          })}
+        >
+          Successfully Sent Message. Thank You.
+        </GradientText>
+      );
     } else if (res.error) {
-      console.log("Error", res.error.message);
+      toast.error(
+        <Typography
+          sx={(theme) => ({
+            fontFamily: "Bebasneue",
+            letterSpacing: 2,
+            color: "red",
+          })}
+        >
+          Error Submitting Form,Please Try again later !
+        </Typography>
+      );
     }
   };
 
@@ -116,7 +136,8 @@ const Contact = () => {
           />
         </GradientText>
         <Box
-          component={"div"}
+          component={"form"}
+          autoComplete="off"
           sx={(theme) => ({
             display: "flex",
             flexDirection: "column",
@@ -129,13 +150,17 @@ const Contact = () => {
               mt: "auto",
             },
           })}
+          onSubmit={handleSubmit(onSubmitContactForm)}
         >
           <TextField
             variant="standard"
             label="Name"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            {...register("name", { required: true })}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
             sx={(theme) => ({
               "& .MuiInput-root": {
                 width: 400,
@@ -189,9 +214,14 @@ const Contact = () => {
           <TextField
             variant="standard"
             label="Email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register("email", {
+              required: true,
+            })}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
             sx={(theme) => ({
               "& .MuiInput-root": {
                 width: 400,
@@ -245,9 +275,12 @@ const Contact = () => {
           <TextField
             variant="standard"
             label="Subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
+            {...register("subject", { required: true })}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
             sx={(theme) => ({
               "& .MuiInput-root": {
                 width: 400,
@@ -301,11 +334,14 @@ const Contact = () => {
           <TextField
             variant="standard"
             label="Message"
-            name="message"
+            {...register("message", { required: true })}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
             multiline
             rows={6}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
             sx={(theme) => ({
               "& .MuiInput-root": {
                 width: 400,
@@ -355,7 +391,8 @@ const Contact = () => {
             })}
           />
           <Button
-            onClick={onSubmitContactForm}
+            type="submit"
+            onClick={handleSubmit(onSubmitContactForm)}
             sx={(theme) => ({
               background:
                 "linear-gradient(90deg, rgba(247,119,15,1) 0%, rgba(232,66,15,1) 34%, rgba(246,0,232,1) 100%)",
@@ -382,6 +419,7 @@ const Contact = () => {
           >
             Submit
           </Button>
+          <Toaster />
         </Box>
         <Box
           component="div"
@@ -554,4 +592,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default memo(Contact);
