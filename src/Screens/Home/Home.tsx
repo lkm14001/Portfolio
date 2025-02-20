@@ -6,6 +6,8 @@ import me from "../../assets/Images/me.jpg";
 import { motion, useScroll, useTransform } from "motion/react";
 import Reveal from "../../components/Reveal/Reveal";
 
+import CV from '../../assets/Resume/Leela_Krishna Mohan_Resume.pdf'
+
 export const RightBorderLine = styled(Box)`
   position: absolute;
   right: 2rem;
@@ -339,31 +341,33 @@ const Home = () => {
               world of web.
             </Typography>
           </Box>
-          <Button
-            disableRipple
-            variant="outlined"
-            sx={(theme) => ({
-              fontSize: "1rem",
-              borderRadius: 48,
-              borderColor: "homePage.border",
-              borderWidth: 3,
-              paddingX: 4,
-              paddingY: 1.5,
-              color: "white",
-              fontWeight: "bolder",
-              textTransform: "capitalize",
-              transition: "all 0.3s ease",
-              [theme.breakpoints.down("xs")]: {
-                fontSize: "0.8rem",
-              },
-              "&:hover": {
-                backgroundColor: "homePage.navButtons",
-                transform: "scale(1.2)",
-              },
-            })}
-          >
-            Download my CV
-          </Button>
+          <Box component="a" href={CV} download={"Leela_Krishna_Mohan_Resume"} target="_blank">
+            <Button
+              disableRipple
+              variant="outlined"
+              sx={(theme) => ({
+                fontSize: "1rem",
+                borderRadius: 48,
+                borderColor: "homePage.border",
+                borderWidth: 3,
+                paddingX: 4,
+                paddingY: 1.5,
+                color: "white",
+                fontWeight: "bolder",
+                textTransform: "capitalize",
+                transition: "all 0.3s ease",
+                [theme.breakpoints.down("xs")]: {
+                  fontSize: "0.8rem",
+                },
+                "&:hover": {
+                  backgroundColor: "homePage.navButtons",
+                  transform: "scale(1.2)",
+                },
+              })}
+            >
+              Download my CV
+            </Button>
+          </Box>
         </Box>
       </BoxMotion>
     </Layout>
